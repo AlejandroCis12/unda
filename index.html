@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>UNDA | Catálogo Hidráulico</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+  background: #f8fafc;
+}
+
+/* HEADER CON ESPACIO PARA LOGO */
+header {
+  background: #045092;
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 100;
+}
+
+/* Área del logo */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: auto;
+  height: 55px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.logo-text span {
+  color: #ff8e00;
+}
+
+/* Navegación */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff8e00;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #ff8e00;
+}
+
+.btn-catalogo {
+  background: #ff8e00;
+  color: #045092;
+  padding: 8px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border: 2px solid transparent;
+}
+
+.btn-catalogo:hover {
+  background: transparent;
+  color: #ff8e00;
+  border-color: #ff8e00;
+  transform: translateY(-2px);
+}
+
+/* SLIDER MÁS PEQUEÑO */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #022b4a;
+}
+
+.slides-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(4,80,146,0.85) 0%, rgba(4,80,146,0.5) 100%);
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin-left: 8%;
+  color: white;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-content h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.slide-content p {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+.slide-btn {
+  background: #ff8e00;
+  color: #045092;
+  padding: 10px 26px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  border: 2px solid transparent;
+}
+
+.slide-btn:hover {
+  background: transparent;
+  color: #ff8e00;
+  border-color: #ff8e00;
+  transform: translateY(-2px);
+}
+
+/* Botones de navegación */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border: none;
+  font-family: monospace;
+}
+
+.slider-btn:hover {
+  background: #ff8e00;
+  color: #045092;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.btn-prev {
+  left: 25px;
+}
+
+.btn-next {
+  right: 25px;
+}
+
+/* Slider dots */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(255,255,255,0.9);
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: #ff8e00;
+  transform: scale(1.2);
+}
+
+/* SECCIÓN PRODUCTOS */
+.products-section {
+  padding: 60px 5% 70px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.products-section h2 {
+  font-size: 2.2rem;
+  color: #045092;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.products-section h2:after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: #ff8e00;
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.subtitle {
+  color: #6c7a8a;
+  margin-bottom: 50px;
+  font-size: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  padding: 35px 25px;
+  border: 1px solid #eef2f8;
+  cursor: pointer;
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #ff8e00;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+.product-card:hover::before {
+  transform: scaleX(1);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(4,80,146,0.15);
+  border-color: rgba(255,142,0,0.3);
+}
+
+.product-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f5fa;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .product-icon {
+  background: #ff8e00;
+  transform: scale(1.05);
+}
+
+.product-card:hover .product-icon svg {
+  stroke: white;
+}
+
+.product-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: #045092;
+  stroke-width: 1.8;
+  transition: all 0.3s ease;
+}
+
+.product-card h3 {
+  font-size: 1.4rem;
+  color: #045092;
+  margin-bottom: 12px;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover h3 {
+  color: #ff8e00;
+}
+
+.product-card p {
+  color: #6c7a8a;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* FOOTER */
+footer {
+  background: #045092;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 0.85rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .slides-container {
+    height: 420px;
+  }
+  
+  .slide-content h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px 5%;
+  }
+  
+  .logo-area {
+    justify-content: center;
+  }
+  
+  .logo-img {
+    height: 45px;
+  }
+  
+  .logo-text {
+    font-size: 1.3rem;
+  }
+  
+  .nav-links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .btn-catalogo {
+    margin-top: 5px;
+  }
+  
+  .slides-container {
+    height: 380px;
+  }
+  
+  .slide-content {
+    margin-left: 6%;
+    margin-right: 6%;
+    text-align: center;
+    max-width: 90%;
+  }
+  
+  .slide-content h1 {
+    font-size: 1.6rem;
+  }
+  
+  .slide-content p {
+    font-size: 0.9rem;
+  }
+  
+  .slider-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.4rem;
+  }
+  
+  .btn-prev {
+    left: 12px;
+  }
+  
+  .btn-next {
+    right: 12px;
+  }
+  
+  .products-section {
+    padding: 45px 5% 55px;
+  }
+  
+  .products-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .products-grid {
+    gap: 20px;
+  }
+  
+  .product-card {
+    padding: 25px 20px;
+  }
+  
+  .product-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .product-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .product-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    height: 38px;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+  
+  .slides-container {
+    height: 320px;
+  }
+  
+  .slide-content h1 {
+    font-size: 1.3rem;
+  }
+  
+  .slide-content p {
+    font-size: 0.8rem;
+    margin-bottom: 18px;
+  }
+  
+  .slide-btn {
+    padding: 7px 18px;
+    font-size: 0.8rem;
+  }
+  
+  .slider-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+  
+  .btn-prev {
+    left: 8px;
+  }
+  
+  .btn-next {
+    right: 8px;
+  }
+  
+  .products-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+  }
+  
+  .product-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .product-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .product-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .product-card p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .slides-container {
+    height: 280px;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <!-- LOGO CON DIMENSIONES 1716x624 -->
+    <img src="logo.png" alt="UNDA Hidráulica" class="logo-img">
+    <div class="logo-text">UNDA<span>Hidráulica</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Productos</a></li>
+    <li><a href="#">Catálogo</a></li>
+  </ul>
+  <a href="Catalogo_unda.pdf" target="_blank" class="btn-catalogo">Ver Catálogo</a>
+</header>
+
+<!-- SLIDER FULL WIDTH MÁS PEQUEÑO CON BOTONES -->
+<div class="hero-slider">
+  <div class="slides-container" id="slider">
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+      <div class="slide-content">
+        <h1>Soluciones Hidráulicas Profesionales</h1>
+        <p>Tubería PVC, válvulas y sistemas de riego de alta calidad para proyectos residenciales e industriales</p>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn">Ver Catálogo Completo</a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+      <div class="slide-content">
+        <h1>Tubería y Conexiones de Alta Calidad</h1>
+        <p>Resistencia y durabilidad certificada para proyectos de infraestructura y construcción</p>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn">Conocer Productos</a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&auto=format&fit=crop&w=2106&q=80');">
+      <div class="slide-content">
+        <h1>Sistemas de Riego Tecnificados</h1>
+        <p>Tecnología eficiente para ahorro de agua y máximo rendimiento en áreas verdes y agrícolas</p>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn">Explorar Soluciones</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Botones prev/next -->
+  <div class="slider-btn btn-prev" id="prevBtn">‹</div>
+  <div class="slider-btn btn-next" id="nextBtn">›</div>
+  
+  <!-- Dots -->
+  <div class="slider-dots" id="dots"></div>
+</div>
+
+<!-- PRODUCTOS CON ICONOS ACORDE A CADA PRODUCTO -->
+<div class="products-section">
+  <h2>Nuestros Productos</h2>
+  <div class="subtitle">Línea completa para proyectos hidráulicos con los más altos estándares de calidad</div>
+  
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12H21M12 3V21M7.5 7.5L16.5 16.5M16.5 7.5L7.5 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+      </div>
+      <h3>Tubería PVC</h3>
+      <p>Para agua potable, drenaje e instalaciones hidráulicas residenciales e industriales</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L12 7M12 17L12 22M4 12L2 12M22 12L20 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M12 9L12 12L14 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Válvulas</h3>
+      <p>Compuerta, mariposa, check y control de flujo para sistemas de presión</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 8H20M6 8V6C6 4.9 6.9 4 8 4H16C17.1 4 18 4.9 18 6V8" stroke="currentColor" stroke-width="1.8"/>
+          <rect x="4" y="8" width="16" height="10" rx="1" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M8 12H12M8 15H10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M18 12V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Sistemas de Riego</h3>
+      <p>Goteo, aspersión y automatización para agricultura y jardinería profesional</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 8H19M5 8L5 16C5 17.1 5.9 18 7 18H17C18.1 18 19 17.1 19 16V8M5 8L7 5H17L19 8" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M9 12H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="15" r="1.5" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+      </div>
+      <h3>Línea Sanitaria</h3>
+      <p>Muebles, conexiones y accesorios para baños y cocinas de alto rendimiento</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 UNDA Hidráulica - Todos los derechos reservados
+</footer>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('dots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentSlide = 0;
+  let interval;
+
+  // Crear dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function goToSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+      if (dots[i]) dots[i].classList.toggle('active', i === index);
+    });
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % slides.length;
+    goToSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentSlide - 1 + slides.length) % slides.length;
+    goToSlide(prev);
+  }
+
+  function startSlider() {
+    if (interval) clearInterval(interval);
+    interval = setInterval(nextSlide, 5000);
+  }
+
+  // Eventos botones
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      clearInterval(interval);
+      startSlider();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      clearInterval(interval);
+      startSlider();
+    });
+  }
+
+  goToSlide(0);
+  startSlider();
+
+  // Pausar al hover
+  const sliderContainer = document.querySelector('.hero-slider');
+  if (sliderContainer) {
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(interval));
+    sliderContainer.addEventListener('mouseleave', startSlider);
+  }
+</script>
+
+</body>
+</html>
