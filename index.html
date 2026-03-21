@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>UNDA | Catálogo Hidráulico</title>
+<!-- Font Awesome 6 (iconos profesionales) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 * {
   margin: 0;
@@ -30,28 +32,16 @@ header {
   z-index: 100;
 }
 
-/* Área del logo */
+/* Área del logo - solo la imagen, sin texto */
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .logo-img {
   width: auto;
   height: 55px;
   object-fit: contain;
-}
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.5px;
-}
-
-.logo-text span {
-  color: #ff8e00;
 }
 
 /* Navegación */
@@ -100,6 +90,9 @@ header {
   font-size: 0.9rem;
   white-space: nowrap;
   border: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-catalogo:hover {
@@ -194,7 +187,9 @@ header {
   border-radius: 40px;
   text-decoration: none;
   font-weight: 700;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   transition: all 0.3s ease;
   font-size: 0.9rem;
   border: 2px solid transparent;
@@ -227,7 +222,6 @@ header {
   font-size: 1.6rem;
   font-weight: bold;
   border: none;
-  font-family: monospace;
 }
 
 .slider-btn:hover {
@@ -352,8 +346,8 @@ header {
 }
 
 .product-icon {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto 20px;
   display: flex;
   align-items: center;
@@ -361,23 +355,14 @@ header {
   background: #f0f5fa;
   border-radius: 50%;
   transition: all 0.3s ease;
+  font-size: 2.5rem;
+  color: #045092;
 }
 
 .product-card:hover .product-icon {
   background: #ff8e00;
+  color: white;
   transform: scale(1.05);
-}
-
-.product-card:hover .product-icon svg {
-  stroke: white;
-}
-
-.product-icon svg {
-  width: 40px;
-  height: 40px;
-  stroke: #045092;
-  stroke-width: 1.8;
-  transition: all 0.3s ease;
 }
 
 .product-card h3 {
@@ -431,10 +416,6 @@ footer {
   
   .logo-img {
     height: 45px;
-  }
-  
-  .logo-text {
-    font-size: 1.3rem;
   }
   
   .nav-links {
@@ -501,23 +482,15 @@ footer {
   }
   
   .product-icon {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .product-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 480px) {
   .logo-img {
     height: 38px;
-  }
-  
-  .logo-text {
-    font-size: 1.1rem;
   }
   
   .slides-container {
@@ -562,13 +535,9 @@ footer {
   }
   
   .product-icon {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .product-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
   }
   
   .product-card h3 {
@@ -599,16 +568,15 @@ footer {
 
 <header>
   <div class="logo-area">
-    <!-- LOGO CON DIMENSIONES 1716x624 -->
+    <!-- LOGO CON DIMENSIONES 1716x624 - SOLO LA IMAGEN, SIN TEXTO -->
     <img src="logo.png" alt="UNDA Hidráulica" class="logo-img">
-    <div class="logo-text">UNDA<span>Hidráulica</span></div>
   </div>
   <ul class="nav-links">
     <li><a href="#">Inicio</a></li>
     <li><a href="#">Productos</a></li>
     <li><a href="#">Catálogo</a></li>
   </ul>
-  <a href="Catalogo_unda.pdf" target="_blank" class="btn-catalogo">Ver Catálogo</a>
+  <a href="Catalogo_unda.pdf" target="_blank" class="btn-catalogo"><i class="fas fa-download"></i> Ver Catálogo</a>
 </header>
 
 <!-- SLIDER FULL WIDTH MÁS PEQUEÑO CON BOTONES -->
@@ -618,34 +586,34 @@ footer {
       <div class="slide-content">
         <h1>Soluciones Hidráulicas Profesionales</h1>
         <p>Tubería PVC, válvulas y sistemas de riego de alta calidad para proyectos residenciales e industriales</p>
-        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn">Ver Catálogo Completo</a>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn"><i class="fas fa-file-pdf"></i> Ver Catálogo Completo</a>
       </div>
     </div>
     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
       <div class="slide-content">
         <h1>Tubería y Conexiones de Alta Calidad</h1>
         <p>Resistencia y durabilidad certificada para proyectos de infraestructura y construcción</p>
-        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn">Conocer Productos</a>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn"><i class="fas fa-industry"></i> Conocer Productos</a>
       </div>
     </div>
     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&auto=format&fit=crop&w=2106&q=80');">
       <div class="slide-content">
         <h1>Sistemas de Riego Tecnificados</h1>
         <p>Tecnología eficiente para ahorro de agua y máximo rendimiento en áreas verdes y agrícolas</p>
-        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn">Explorar Soluciones</a>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn"><i class="fas fa-leaf"></i> Explorar Soluciones</a>
       </div>
     </div>
   </div>
   
   <!-- Botones prev/next -->
-  <div class="slider-btn btn-prev" id="prevBtn">‹</div>
-  <div class="slider-btn btn-next" id="nextBtn">›</div>
+  <div class="slider-btn btn-prev" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+  <div class="slider-btn btn-next" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
   
   <!-- Dots -->
   <div class="slider-dots" id="dots"></div>
 </div>
 
-<!-- PRODUCTOS CON ICONOS ACORDE A CADA PRODUCTO -->
+<!-- PRODUCTOS CON FONTAWESOME ICONS ACORDE A CADA PRODUCTO -->
 <div class="products-section">
   <h2>Nuestros Productos</h2>
   <div class="subtitle">Línea completa para proyectos hidráulicos con los más altos estándares de calidad</div>
@@ -653,44 +621,28 @@ footer {
   <div class="products-grid">
     <div class="product-card">
       <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 12H21M12 3V21M7.5 7.5L16.5 16.5M16.5 7.5L7.5 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
-        </svg>
+        <i class="fas fa-water"></i>
       </div>
       <h3>Tubería PVC</h3>
       <p>Para agua potable, drenaje e instalaciones hidráulicas residenciales e industriales</p>
     </div>
     <div class="product-card">
       <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L12 7M12 17L12 22M4 12L2 12M22 12L20 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/>
-          <path d="M12 9L12 12L14 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
+        <i class="fas fa-sliders-h"></i>
       </div>
       <h3>Válvulas</h3>
       <p>Compuerta, mariposa, check y control de flujo para sistemas de presión</p>
     </div>
     <div class="product-card">
       <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 8H20M6 8V6C6 4.9 6.9 4 8 4H16C17.1 4 18 4.9 18 6V8" stroke="currentColor" stroke-width="1.8"/>
-          <rect x="4" y="8" width="16" height="10" rx="1" stroke="currentColor" stroke-width="1.8"/>
-          <path d="M8 12H12M8 15H10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M18 12V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
+        <i class="fas fa-sprinkler"></i>
       </div>
       <h3>Sistemas de Riego</h3>
       <p>Goteo, aspersión y automatización para agricultura y jardinería profesional</p>
     </div>
     <div class="product-card">
       <div class="product-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 8H19M5 8L5 16C5 17.1 5.9 18 7 18H17C18.1 18 19 17.1 19 16V8M5 8L7 5H17L19 8" stroke="currentColor" stroke-width="1.8"/>
-          <path d="M9 12H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          <circle cx="12" cy="15" r="1.5" stroke="currentColor" stroke-width="1.8"/>
-        </svg>
+        <i class="fas fa-toilet"></i>
       </div>
       <h3>Línea Sanitaria</h3>
       <p>Muebles, conexiones y accesorios para baños y cocinas de alto rendimiento</p>
@@ -699,10 +651,13 @@ footer {
 </div>
 
 <footer>
-  © 2026 UNDA Hidráulica - Todos los derechos reservados
+  © <span id="currentYear"></span> UNDA Hidráulica - Todos los derechos reservados
 </footer>
 
 <script>
+  // Año automático
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  
   const slides = document.querySelectorAll('.slide');
   const dotsContainer = document.getElementById('dots');
   const prevBtn = document.getElementById('prevBtn');
