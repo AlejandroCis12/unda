@@ -22,6 +22,7 @@
 </header>
 
 <!-- SLIDER -->
+<!-- SLIDER -->
 <div class="hero-slider">
   <div class="slides-container" id="slider">
     <div class="slide active" style="background-image: url('./imagenes/slider-1.png');">
@@ -43,6 +44,20 @@
         <h1>Sistemas de Riego Tecnificados</h1>
         <p>Tecnología eficiente para ahorro de agua y máximo rendimiento en áreas verdes y agrícolas</p>
         <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn"><i class="fas fa-leaf"></i> Explorar Soluciones</a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('./imagenes/slider-4.png');">
+      <div class="slide-content">
+        <h1>Válvulas Industriales de Precisión</h1>
+        <p>Control de flujo avanzado para sistemas de bombeo, redes de distribución y procesos industriales</p>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn"><i class="fas fa-cogs"></i> Ver Línea de Válvulas</a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('./imagenes/slider-5.png');">
+      <div class="slide-content">
+        <h1>Línea Sanitaria de Alto Rendimiento</h1>
+        <p>Tuberías, conexiones y accesorios para baños</p>
+        <a href="Catalogo_unda.pdf" target="_blank" class="slide-btn"><i class="fas fa-bath"></i> Explorar Sanitarios</a>
       </div>
     </div>
   </div>
@@ -91,11 +106,40 @@
   </div>
 </div>
 
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto-seccion">
+    <div class="container">
+      <div class="contacto-grid">
+        <div class="contacto-info">
+          <h3 data-aos="fade-right">¿Necesitas una cotización?</h3>
+          <div class="contacto-detalle" data-aos="fade-right" data-aos-delay="200">
+            <i class="fas fa-clock"></i>
+            <p><strong>Horario:</strong><br>Lun-Vie: 9:00 AM - 6:00 PM<br>Sábado: 9:00 AM - 1:00 PM</p>
+          </div>
+          <div class="contacto-detalle" data-aos="fade-right" data-aos-delay="300">
+            <i class="fas fa-envelope"></i>
+            <p>cotizaciones@unda.mx</p>
+          </div>
+        </div>
+        <div class="contacto-formulario" data-aos="fade-left" data-aos-delay="200">
+          <h4 data-aos="fade-down">Envíanos tu lista</h4>
+          <input type="text" placeholder="Nombre completo" class="campo" data-aos="fade-up" data-aos-delay="300">
+          <input type="email" placeholder="Correo electrónico" class="campo" data-aos="fade-up" data-aos-delay="400">
+          <input type="tel" placeholder="Teléfono" class="campo" data-aos="fade-up" data-aos-delay="500">
+          <textarea placeholder="Productos que necesitas (incluye cantidades)" rows="4" class="campo" data-aos="fade-up" data-aos-delay="600"></textarea>
+          <button class="btn-enviar" data-aos="zoom-in" data-aos-delay="700">ENVIAR COTIZACIÓN</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <footer>
   © <span id="currentYear"></span> UNDA - Todos los derechos reservados
 </footer>
 
 <script src="app.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 </body>
 </html>
